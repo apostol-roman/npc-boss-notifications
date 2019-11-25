@@ -45,8 +45,8 @@
 					}
 					break
 				case "upd":
-					MSG.chat(MSG.YEL("Мировые боссы")
-)					for (const i of mod.settings.bosses) {
+					MSG.chat("Мировые боссы")
+					for (const i of mod.settings.bosses) {
 						if (i.logTime == undefined) continue
 						if (![5001, 501, 4001].includes(i.templateId)) continue
 						
@@ -61,8 +61,8 @@
 					}
 					// break
 				// case "Mys":
-					MSG.chat(MSG.YEL("Тайные торговцы")
-)					for (const j of mod.settings.bosses) {
+					MSG.chat("Тайные торговцы")
+					for (const j of mod.settings.bosses) {
 						if (j.logTime == undefined) continue
 						if (![63, 72, 84, 183].includes(j.huntingZoneId)) continue
 						
@@ -77,7 +77,7 @@
 					}
 					break
 				default:
-					MSG.chat("Boss-Helper " + MSG.RED("Ошибка. Неверный параметр!"))
+					MSG.chat("Boss-Helper " + MSG.RED("Неверный параметр!"))
 					break
 			}
 		}
@@ -342,3 +342,4 @@
 		}, timeout)
 	}
 }
+
