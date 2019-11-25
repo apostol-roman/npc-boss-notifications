@@ -1,0 +1,20 @@
+{
+    "files": {
+        "README.md": "6166b43e71366c4d131a3358c51126597d22ca9338ef8e0424e4d5290e692caa",
+        "config.json": "0d9a6816029173f7e5c78ea5f2bae9a0be9bfc51f8760c42cd41658cea02caf7",
+        "index.js": "b165028f9ced9a771bd7fcb2d9d6442c818024d316180e50e090881f312f4a50",
+        "module.config.json": "c0a16dfca2dc00eb2f4c5670a98fcc163fd4f85c34b04fe825e6c3e79de88ca1",
+        "module.json": "9ab2f08d44a44c2aadad40a2ea8f4e20685e8507de04081013c467ff739209b8",
+        "settings_migrator.js": "19f117800cde5164e0e19501387aa5a65123757103019290ef5a4744cc4c5f57"
+    },
+    "defs": {
+        "S_BOSS_GAGE_INFO": 3,
+        "S_DESPAWN_DROPITEM": 4,
+        "S_DESPAWN_NPC": 3,
+        "S_EACH_SKILL_RESULT": 14,
+        "S_NPC_STATUS": 2,
+        "S_SPAWN_DROPITEM": 8,
+        "S_SPAWN_NPC": 11,
+        "S_SYSTEM_MESSAGE": 1
+    }
+}
