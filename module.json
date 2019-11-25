@@ -8,7 +8,7 @@
         "settingsVersion": 10    },
     "authorRuadaptation": "apostol-roman",
     "description": "Show world bosses and mystery merchants time, that appear in visible range, sends the corresponding text and marks their position",
-    "servers": [""],
+    "servers": ["https://github.com/apostol-roman/npc-boss-notifications/"],
     "dependencies": {
         "notifier": "https://raw.githubusercontent.com/SerenTera/tera-notifier/master/module.json",
         "tera-message": "https://raw.githubusercontent.com/tera-mod/tera-message/master/module.json"
