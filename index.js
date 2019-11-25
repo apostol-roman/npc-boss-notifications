@@ -1,4 +1,4 @@
-module.exports = function BossHelper(mod) {
+﻿module.exports = function BossHelper(mod) {
 	const notifier = mod.require ? mod.require.notifier : require('tera-notifier')(mod)
 	const Message = require('../tera-message')
 	const MSG = new Message(mod)
@@ -14,7 +14,7 @@ module.exports = function BossHelper(mod) {
 	mod.command.add(["boss", "bh"], (arg) => {
 		if (!arg) {
 			mod.settings.enabled = !mod.settings.enabled
-			MSG.chat("Boss-Helper " + (mod.settings.enabled ? MSG.BLU(" on ") : MSG.YEL(" off ")))
+			MSG.chat("Boss-Helper " + (mod.settings.enabled ? MSG.BLU("Вкл.") : MSG.RED("Выкл.")))
 			if (!mod.settings.enabled) {
 				for (let i of mobid) {
 					despawnItem(i)
@@ -24,19 +24,19 @@ module.exports = function BossHelper(mod) {
 			switch (arg) {
 				case "msg":
 					mod.settings.alerted = !mod.settings.alerted
-					MSG.chat("alert " + (mod.settings.alerted ? MSG.BLU("on") : MSG.YEL("off")))
+					MSG.chat("alert " + (mod.settings.alerted ? MSG.BLU("Вкл.") : MSG.RED("Выкл.")))
 					break
 				case "not":
 					mod.settings.notice = !mod.settings.notice
-					MSG.chat("notice " + (mod.settings.notice ? MSG.BLU("on") : MSG.YEL("off")))
+					MSG.chat("notice " + (mod.settings.notice ? MSG.BLU("Вкл.") : MSG.RED("Выкл.")))
 					break
 				case "log":
 					mod.settings.messager = !mod.settings.messager
-					MSG.chat("message log " + (mod.settings.messager ? MSG.BLU("on") : MSG.YEL("off")))
+					MSG.chat("message log " + (mod.settings.messager ? MSG.BLU("Вкл.") : MSG.RED("Выкл.")))
 					break
 				case "marker":
 					mod.settings.marker = !mod.settings.marker
-					MSG.chat("marker " + (mod.settings.marker ? MSG.BLU("on") : MSG.YEL("off")))
+					MSG.chat("marker " + (mod.settings.marker ? MSG.BLU("Вкл.") : MSG.RED("Выкл.")))
 					break
 				case "clear":
 					MSG.chat("Boss-Helper " + TIP("Clear log"))
@@ -45,39 +45,39 @@ module.exports = function BossHelper(mod) {
 					}
 					break
 				case "upd":
-					MSG.chat("------------ World BOSS ------------")
-					for (const i of mod.settings.bosses) {
+					MSG.chat(MSG.YEL("Мировые боссы")
+)					for (const i of mod.settings.bosses) {
 						if (i.logTime == undefined) continue
 						if (![5001, 501, 4001].includes(i.templateId)) continue
 						
 						var nextTime = i.logTime + 5*60*60*1000
 						if (i.logTime == 0) {
-							MSG.chat(MSG.RED(i.name) + MSG.YEL(" Not seen yet "))
+							MSG.chat(MSG.RED(i.name) + MSG.YEL(" Нет данных"))
 						} else if (Date.now() < nextTime) {
-							MSG.chat(MSG.RED(i.name) + " Next appearance " + MSG.TIP(getTime(nextTime)))
+							MSG.chat(MSG.RED(i.name) + " Ожидаемое появление " + MSG.TIP(getTime(nextTime)))
 						} else {
-							MSG.chat(MSG.RED(i.name) + " Last seen " + MSG.GRY(getTime(nextTime)))
+							MSG.chat(MSG.RED(i.name) + " Был замечен " + MSG.GRY(getTime(nextTime)))
 						}
 					}
 					// break
 				// case "Mys":
-					MSG.chat("------------ Mystery Merchant ------------")
-					for (const j of mod.settings.bosses) {
+					MSG.chat(MSG.YEL("Тайные торговцы")
+)					for (const j of mod.settings.bosses) {
 						if (j.logTime == undefined) continue
 						if (![63, 72, 84, 183].includes(j.huntingZoneId)) continue
 						
 						var nextTime = j.logTime + 24*60*60*1000
 						if (j.logTime == 0) {
-							MSG.chat(MSG.PIK(j.name) + MSG.YEL(" Not seen yet"))
+							MSG.chat(MSG.PIK(j.name) + MSG.YEL(" Нет данных"))
 						} else if (Date.now() < nextTime) {
-							MSG.chat(MSG.PIK(j.name) + " Next appearance " + MSG.TIP(getTime(nextTime)))
+							MSG.chat(MSG.PIK(j.name) + " Ожидаемое появление " + MSG.TIP(getTime(nextTime)))
 						} else {
-							MSG.chat(MSG.PIK(j.name) + " last seen " + MSG.GRY(getTime(nextTime)))
+							MSG.chat(MSG.PIK(j.name) + " Был замечен " + MSG.GRY(getTime(nextTime)))
 						}
 					}
 					break
 				default:
-					MSG.chat("Boss-Helper " + MSG.RED("parameter error!"))
+					MSG.chat("Boss-Helper " + MSG.RED("Ошибка. Неверный параметр!"))
 					break
 			}
 		}
@@ -97,10 +97,10 @@ module.exports = function BossHelper(mod) {
 				mobid.push(event.gameId)
 			}
 			if (mod.settings.alerted) {
-				MSG.alert(("Found " + boss.name), 44)
+				MSG.alert(("Обнаружен " + boss.name), 44)
 			}
 			if (mod.settings.notice) {
-				MSG.raids("Found " + boss.name)
+				MSG.raids("Обнаружен " + boss.name)
 			}
 		}
 		
@@ -135,10 +135,10 @@ module.exports = function BossHelper(mod) {
 		// if (boss) {
 			// if (event.type == 5) {
 				// if (mod.settings.alerted) {
-					// MSG.alert((boss.name + " Был убит"), 44)
+					// MSG.alert((boss.name + " Уничтожен"), 44)
 				// }
 				// if (mod.settings.notice) {
-					// MSG.raids(boss.name + " Был убит")
+					// MSG.raids(boss.name + " Уничтожен")
 				// }
 			// } else if (event.type == 1) {
 				// if (mod.settings.alerted) {
@@ -162,7 +162,7 @@ module.exports = function BossHelper(mod) {
 				getBossMsg(sysMsg.tokens.npcName)
 				whichBoss(bossHunting, bossTemplate)
 				if (boss) {
-					MSG.chat(MSG.BLU("Updated ") + MSG.RED(boss.name))
+					MSG.chat(MSG.BLU("Обнаружен ") + MSG.RED(boss.name))
 					notificationafk("update " + boss.name)
 				}
 				break
@@ -172,7 +172,7 @@ module.exports = function BossHelper(mod) {
 				whichBoss(bossHunting, bossTemplate)
 				if (boss) {
 					var nextTime = Date.now() + 5*60*60*1000
-					MSG.chat(MSG.RED(boss.name) + " next update " + MSG.TIP(getTime(nextTime)))
+					MSG.chat(MSG.RED(boss.name) + " Ожидаемое появление " + MSG.TIP(getTime(nextTime)))
 					saveTime()
 				}
 				break
@@ -279,7 +279,7 @@ module.exports = function BossHelper(mod) {
 		if (gage_info.curHp * 100n / gage_info.maxHp > boss_hp_stage) {
 			gage_info.curHp = gage_info.maxHp * boss_hp_stage / 100n;
 			update_hp();
-			mod.command.message('Boss HP fixed <font color="#E69F00">' + String(boss_hp_stage) + '</font>%');
+			mod.command.message('Здоровье босса снижено до <font color="#E69F00">' + String(boss_hp_stage) + '</font>%');
 		}
 	}
 	
@@ -292,9 +292,9 @@ module.exports = function BossHelper(mod) {
 		}
 		
 		if (e.hpLevel == 5) {
-			mod.command.message("BAM HP full, no one attacked it");
+			mod.command.message("Здоровье босса полное, никто его еще не атаковал");
 		} else if (e.hpLevel == 0) {
-			mod.command.message('BAM HP below <font color="#FF0000">20%</font> !!!');
+			mod.command.message('Здоровье босса ниже <font color="#FF0000">20%</font> !!!');
 		}
 		
 		if (!hooks.length) {
